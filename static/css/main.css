@@ -10,6 +10,7 @@ body {
     color: #000;
     background: #407189;
     margin: 0;
+    background-color: #1E90FF !important;
 }
 
 #container {
@@ -23,7 +24,7 @@ h1, h2 {
     font-family: 'Droid Serif', serif;
     font-size: 3em;
     margin: 0;
-		padding-bottom: 1em;
+		padding-bottom: 0.1em;
 }
 
 h2 {
@@ -31,7 +32,8 @@ h2 {
 }
 
 p, li {
-    font-size: 1.4em;
+    font-size: 1em;
+
 }
 
 p.credit {
@@ -42,18 +44,6 @@ img {
 	display: block;
 	margin: auto;
 	max-width: 100%;
-}
-
-/* links */
-
-a {
-    color: #1484bc;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #407189;
-    text-decoration: underline;
 }
 
 
@@ -69,3 +59,23 @@ a:hover {
         padding: 2em;
     }
 }
+
+.box{
+height:140px;
+width:140px;
+margin: 20px;
+content: '';
+cursor: pointer;
+background-color: white;
+display: inline-block;
+}
+
+#container2{
+ display: flex;
+ margin: 0;
+}
+
+#result{
+    font-size: 20px;
+}
+
