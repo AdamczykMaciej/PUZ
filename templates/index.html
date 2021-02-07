@@ -3,40 +3,48 @@
 {% block body %}
 
 <h1>{{ the_title }}</h1>
-<p>Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, “Do you want to pick door No. 2?” Is it to your advantage to switch your choice? ~ (From Parade magazine’s Ask Marilyn column)</p>
+<p style="font-style: italic;">Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, “Do you want to pick door No. 2?” Is it to your advantage to switch your choice? ~ (From Parade magazine’s Ask Marilyn column)</p>
 <label>GOAL: Win a brand new car</label><br>
-<label>STEP 1: Choose box (1-3)</label><br>
-<label>STEP 2: Monty Hall reveals one box</label><br>
-<label>STEP 3: Leave or change the bet</label><br>
-<label>STEP 4: Monty Hall reveals all boxes</label>
+<label>STEP 1: Choose door (1-3)</label><br>
+<label>STEP 2: Click on blue button "Choose door"</label><br>
+<label>STEP 3: Monty Hall reveals one door</label><br>
+<label>STEP 4: Leave or change the bet</label><br>
+<label>STEP 5: Click on blue button "Choose door"</label><br>
+<label>STEP 6: Monty Hall reveals all doors</label>
 <br>
 <div id="container2">
 <button onclick="clickBox(this)" class="box" id="1">1</button><button onclick="clickBox(this)" class="box" id="2">2</button><button onclick="clickBox(this)" class="box" id="3">3</button>
 </div>
 <br>
-<button class="btn btn-primary" id="simulate" onclick="simulate()" disabled>Choose box</button>
-<button class="btn btn-dark" id="reset" onclick="resetGame()" disabled>New game</button>
-<p id="result"></p>
-<div style="display: flex;">
-    <p>How many games won?</p>
-    <p style="margin-left: 40px;" id="won-num">0</p>
-</div>
-<div style="display: flex;">
-    <p>How many games played? </p>
-    <p style="margin-left: 23px;" id="played-num">0</p>
-</div>
-<div style="display: flex;">
-    <p>Percentage of won games:</p>
-    <p style="margin-left: 23px;" id="won-percent">0%</p>
-</div>
 
-<p>Submit score:</p>
-<form>
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" value=""><br>
-  <input onclick="updateLeaderboard()" type="submit" value="Submit">
-</form>
+<div class="row">
+    <div class="column">
+        <p id="result"></p>
+        <button class="btn btn-primary" id="simulate" onclick="simulate()" disabled>Choose door</button>
+        <button class="btn btn-danger" id="reset" onclick="resetGame()" disabled>New game</button>
+        <div style="display: flex;">
+            <p>How many games won?</p>
+            <p style="margin-left: 40px;" id="won-num">0</p>
+        </div>
+        <div style="display: flex;">
+            <p>How many games played? </p>
+            <p style="margin-left: 23px;" id="played-num">0</p>
+        </div>
+        <div style="display: flex;">
+            <p>Percentage of won games:</p>
+            <p style="margin-left: 23px;" id="won-percent">0%</p>
+        </div>
+    </div>
+    <div class="column">
+        <p>Submit score to the leaderboard after 10 games:</p>
+        <form>
+          <label for="name">Name:</label><br>
+          <input style="margin-bottom: 10px;" type="text" id="name" value=""><br>
+          <input id="submit" onclick="updateLeaderboard()" type="submit" value="Submit" disabled>
+        </form>
 
-<table id="leaderboard"></table>
+        <table id="leaderboard"></table>
+    </div>
+</div>
 
 {% endblock %}

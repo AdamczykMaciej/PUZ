@@ -110,9 +110,13 @@ function simulate(){
         }
         updatePercentageOfWon();
      }
+     if(howManyTimesPlayed === 10){
+        document.getElementById("submit").disabled = false;
+     }
 }
 
 function updateLeaderboard(){
+    if(howManyTimesPlayed === 10){
      $.post("/api/updateLeaderboard",
   {
     name: document.getElementById("name").value,
@@ -121,6 +125,9 @@ function updateLeaderboard(){
   function(data, status){
     console.log("Data: " + data + "\nStatus: " + status);
   });
+  } else{
+    console.log("You have to play 10 games")
+  }
 }
 
 function generateTableHead(table, data) {
@@ -162,4 +169,4 @@ function getLeaderboard() {
     });
 }
 
-$( document ).ready(getLeaderboard());
+getLeaderboard();
