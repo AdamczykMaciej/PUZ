@@ -145,7 +145,8 @@ function updateLeaderboard(){
      $.post("/api/updateLeaderboard",
   {
     name: document.getElementById("name").value,
-    score: document.getElementById("won-percent").innerHTML
+    score: document.getElementById("won-percent").innerHTML,
+    games: document.getElementById("played-num").innerHTML
   },
   function(data, status){
     console.log("Data: " + data + "\nStatus: " + status);
@@ -158,8 +159,8 @@ function updateLeaderboard(){
 function generateTableHead(table, data) {
   let thead = table.createTHead();
   let row = thead.insertRow();
-  let head = ["Name","Score"]
-  for (let key of head) { // data
+//  let head = ["Name","Score", "Games"]
+  for (let key of data) { // data
     let th = document.createElement("th");
     let text = document.createTextNode(key);
     th.appendChild(text);
@@ -168,12 +169,7 @@ function generateTableHead(table, data) {
 }
 
 function generateTable(table, data) {
-    let dict = [];
-    for (let key in data){
-        dict.push({key:key, value: data[key]});
-    }
-  //data
-  for (let element of dict) {
+  for (let element of data) {
     let row = table.insertRow();
     for (key in element) {
       let cell = row.insertCell();
@@ -189,7 +185,7 @@ function getLeaderboard() {
         data = JSON.parse(data);
       let table = document.querySelector("table");
       console.log("Load leaderboard");
-      generateTableHead(table, Object.keys(data));
+      generateTableHead(table, Object.keys(data[0]));
       generateTable(table, data);
     });
 }
