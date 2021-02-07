@@ -2,11 +2,11 @@ from flask import Flask, render_template, request
 import redis
 import json
 
-# we can run docker with redis (there's only a fork on Win) and specify ports
+# 1st option) we can run docker with redis (there's only a fork on Windows) and specify ports
 # $docker run -p 55000:6379 redis
-# the check with $docker ps
+# then check if redis running with $docker ps
 # r = redis.Redis(port=55000, decode_responses=True)
-# hosting
+# 2nd option) hosting
 r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username="Maciej",
                 password="Admin_123", decode_responses=True)
 
@@ -37,7 +37,7 @@ def updateLeaderboard():
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 if __name__ == '__main__':
-
+    # DEBUGGING
     # r.flushdb()
     # r.mset({"Maciej":"66%"})
     # r.hmset("leaderboard",{"Bartek":"70%"})

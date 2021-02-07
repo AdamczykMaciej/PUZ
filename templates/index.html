@@ -13,7 +13,15 @@
 <label>STEP 6: Monty Hall reveals all doors</label>
 <br>
 <div id="container2">
-<button onclick="clickBox(this)" class="box" id="1">1</button><button onclick="clickBox(this)" class="box" id="2">2</button><button onclick="clickBox(this)" class="box" id="3">3</button>
+    <div class="backDoor" id="backDoor1">
+    <button onclick="clickBox(this)" class="box" id="1">1</button>
+    </div>
+      <div class="backDoor" id="backDoor2">
+    <button onclick="clickBox(this)" class="box" id="2">2</button>
+      </div>
+      <div class="backDoor" id="backDoor3">
+    <button onclick="clickBox(this)" class="box" id="3">3</button>
+      </div>
 </div>
 <br>
 
@@ -42,7 +50,6 @@
           <input style="margin-bottom: 10px;" type="text" id="name" value=""><br>
           <input id="submit" onclick="updateLeaderboard()" type="submit" value="Submit" disabled>
         </form>
-
         <table id="leaderboard"></table>
     </div>
 </div>
