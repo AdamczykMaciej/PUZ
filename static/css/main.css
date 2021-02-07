@@ -2,6 +2,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    /*cursor: url(../images/cursor.png), auto;*/
+
 }
 
 body {
@@ -64,14 +66,20 @@ img {
 }
 
 .box{
+color: white;
+font-size: 20px;
 height:140px;
 width:140px;
-margin: 20px;
-margin-bottom: 0px;
 content: '';
-cursor: pointer;
 background-color: white;
 display: inline-block;
+background-image:url(../images/door.png) !important;
+background-repeat:no-repeat;
+background-size: 140px;
+}
+
+button:not(:disabled){
+cursor: pointer;
 }
 
 #container2{
@@ -98,4 +106,31 @@ clear: both;
 .row{
 margin-right: 0px;
 margin-left: 0px;
+}
+
+.box
+{
+  background-color: white;
+
+  transform-origin: left;
+  /*Speed of the Door animation*/
+  transition: all 0.5s ease-in-out;
+}
+
+.boxOpen
+{
+  /*prespectiv creates the door open effect*/
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}
+
+.backDoor
+{
+background-repeat:no-repeat;
+background-position: center;
+  background-color: #333;
+  position:relative;
+  width:140px;
+  height:140px;
+  margin: 20px;
+margin-bottom: 0px;
 }

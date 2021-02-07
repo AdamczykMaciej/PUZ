@@ -3,18 +3,26 @@ var firstChoice = ""
 var howManyTimesPlayed = 0;
 var howManySuccesses = 0;
 var myTurn = 1;
-var inds= [0,1,2]
+var possibleIds = [1,2,3]
+var montyId = 0
+
+function toggleBox(element) {
+  element.classList.toggle("boxOpen");
+}
+
 function clickBox(el){
     document.getElementById("simulate").disabled = false;
     reset()
-    el.style.backgroundColor = "green"
+    el.style.backgroundColor = "white";
+    el.style.color = "yellow";
+    el.innerHTML = "Selected";
+//    el.style.textDecoration = "underline";
     clickedElId = el.id;
-//    console.log("clicked")
 }
 
 function reset(){
     let elements = document.getElementsByClassName("box");
-    [...elements].forEach(e=>{e.style.backgroundColor = "white"});
+    [...elements].forEach(e=>{e.style.backgroundColor = "white";e.style.color = "white"; e.style.textDecoration="unset"; e.innerHTML = e.id;});
 }
 
 function randomInteger(min, max) {
@@ -22,18 +30,26 @@ function randomInteger(min, max) {
 }
 
 function resetGame(){
-    var elements = document.getElementsByClassName("box");
+    let elements = document.getElementsByClassName("box");
+    let backDoors = document.getElementsByClassName("backDoor");
+    [...backDoors].forEach(e=>{e.style.backgroundColor = "#333"});
     [...elements].forEach(e=>{e.style.backgroundColor = "white";e.disabled=false;e.innerHTML='';});
     clickedElId = ""
     firstChoice = ""
     myTurn=1;
     document.getElementById("simulate").disabled = true;
     document.getElementById("reset").disabled = true;
-    document.getElementById("1").innerHTML = "1"
-    document.getElementById("2").innerHTML = "2"
-    document.getElementById("3").innerHTML = "3"
+    let box1 = document.getElementById("1");
+    let box2 = document.getElementById("2");
+    let box3 = document.getElementById("3");
+    box1.innerHTML = "1"
+    box2.innerHTML = "2"
+    box3.innerHTML = "3"
+    toggleBox(box1);
+    toggleBox(box2);
+    toggleBox(box3);
     document.getElementById("result").innerHTML = ""
-    inds = [0,1,2]
+    possibleIds = [1,2,3]
 }
 
 function disableBoxes(){
@@ -44,9 +60,11 @@ function disableBoxes(){
 function resultWon(priceId, leftId){
     howManySuccesses+=1;
     howManyTimesPlayed+=1;
-//            document.getElementById("result").text = "You won!";
-    document.getElementById(priceId).innerHTML = "<img src='/static/images/ferrari.png'>";
-    document.getElementById(leftId+1).innerHTML = "<img src='/static/images/goat.png'>";
+    toggleBox(document.getElementById(priceId));
+    toggleBox(document.getElementById(leftId));
+    document.getElementById("backDoor"+priceId).style.backgroundImage = "url(/static/images/ferrari.png)";
+    document.getElementById("backDoor"+leftId).style.backgroundImage = "url(/static/images/goat.png)";
+    document.getElementById("backDoor"+priceId).style.backgroundColor = "green";
     document.getElementById("won-num").innerHTML = howManySuccesses;
     document.getElementById("played-num").innerHTML = howManyTimesPlayed;
     disableBoxes();
@@ -58,8 +76,12 @@ function resultWon(priceId, leftId){
 
 function resultLost(priceId, userChoiceId){
     howManyTimesPlayed+=1;
-    document.getElementById(price).innerHTML = "<img src='/static/images/ferrari.png'>";
-    document.getElementById(userChoiceId).innerHTML = "<img src='/static/images/goat.png'>";
+    toggleBox(document.getElementById(priceId));
+    toggleBox(document.getElementById(userChoiceId));
+    document.getElementById("backDoor"+price).style.backgroundImage = "url(/static/images/ferrari.png)";
+    document.getElementById("backDoor"+userChoiceId).style.backgroundImage = "url(/static/images/goat.png)";
+    document.getElementById("backDoor"+userChoiceId).style.backgroundColor = "#DC143C"
+    document.getElementById(userChoiceId).style.backgroundColor = "#dc3545";
     document.getElementById("played-num").innerHTML = howManyTimesPlayed;
     disableBoxes();
     document.getElementById("simulate").disabled = true;
@@ -77,34 +99,37 @@ function updatePercentageOfWon(){
 
 function simulate(){
     if(myTurn===1){
-        price = randomInteger(1,3) // 0 - in the box chosen by the user, 1 - in the other box
-//        console.log("price: box:",price)
+        price = randomInteger(1,3)
         firstChoice = document.getElementById(clickedElId);
         firstChoice.disabled = true;
         let boxes = document.querySelectorAll(".box");
         let leftBoxes = [];
-
-        montyHallChoice = 0;
+        let boxIds = [1,2,3]
+        let montyHallChoice = 0;
 
         if(price === parseInt(clickedElId)){
-            inds = inds.filter(item => item !== parseInt(clickedElId-1));
-            montyHallChoice = boxes[inds[randomInteger(0,1)]];
+            possibleIds = boxIds.filter(item => item !== parseInt(clickedElId));
+            montyId  = possibleIds[randomInteger(0,1)]-1;
+            montyHallChoice = boxes[montyId];
+            possibleIds = boxIds.filter(item => item !== montyId + 1)
         }
         else{
-        // 5 to sum of ids of boxes -1 (correction for index in the array (starts from 0))
-            montyHallChoice = boxes[5-price - parseInt(clickedElId)]
+            possibleIds = boxIds.filter(item => item !== parseInt(clickedElId) && item !== price);
+            montyId =  possibleIds[0]-1
+            montyHallChoice = boxes[montyId]
+            possibleIds = boxIds.filter(item => item !== montyId + 1)
         }
-        montyHallChoice.innerHTML = "<img src='/static/images/goat.png'>";
+        toggleBox(montyHallChoice);
+        montyBackDoor = document.getElementById("backDoor"+(montyId+1));
+        montyBackDoor.style.backgroundImage = "url(/static/images/goat.png)";
         montyHallChoice.disabled = true;
         firstChoice.disabled = false;
 
         myTurn+=1;
      } else if(myTurn===2){
-        secondChoice = document.getElementById(clickedElId);
-        secondChoice.disabled = true;
         if(price === parseInt(clickedElId)){
-            leftId = inds.filter(item => item !== montyHallChoice);
-            resultWon(price, leftId[0]);
+            leftId = possibleIds.filter(item => item != price)
+            resultWon(price, leftId[0], clickedElId);
         } else{
             resultLost(price, clickedElId);
         }
@@ -147,7 +172,7 @@ function generateTable(table, data) {
     for (let key in data){
         dict.push({key:key, value: data[key]});
     }
-    //data
+  //data
   for (let element of dict) {
     let row = table.insertRow();
     for (key in element) {
