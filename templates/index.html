@@ -30,24 +30,24 @@
         <p id="result"></p>
         <button class="btn btn-primary" id="simulate" onclick="simulate()" disabled>Choose door</button>
         <button class="btn btn-danger" id="reset" onclick="resetGame()" disabled>New game</button>
-        <div style="display: flex;">
+        <div class="statistics">
             <p>How many games won?</p>
-            <p style="margin-left: 40px;" id="won-num">0</p>
+            <p class="statistics-result" id="won-num">0</p>
         </div>
-        <div style="display: flex;">
+        <div class="statistics">
             <p>How many games played? </p>
-            <p style="margin-left: 23px;" id="played-num">0</p>
+            <p class="statistics-result"  id="played-num">0</p>
         </div>
-        <div style="display: flex;">
+        <div class="statistics">
             <p>Percentage of won games:</p>
-            <p style="margin-left: 23px;" id="won-percent">0%</p>
+            <p class="statistics-result"  id="won-percent">0%</p>
         </div>
     </div>
     <div class="column">
         <p>Submit score to the leaderboard after 10 games:</p>
         <form>
           <label for="name">Name:</label><br>
-          <input style="margin-bottom: 10px;" type="text" id="name" value=""><br>
+          <input style="margin-bottom: 10px;max-width: 100%;" type="text" id="name" value=""><br>
           <input id="submit" onclick="updateLeaderboard()" type="submit" value="Submit" disabled>
         </form>
         <table id="leaderboard"></table>

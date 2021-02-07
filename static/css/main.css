@@ -63,19 +63,35 @@ img {
         width: 100%;
         padding: 2em;
     }
+
+    .backDoor{
+        margin: 5px !important;
+    }
+
+    .statistics{
+        margin-right: 10px;
+    }
+
+    .statistics-result{
+        margin-left: 0px !important;
+    }
+
+    .backDoor{
+        background-size: 90% !important;
+    }
 }
 
 .box{
 color: white;
 font-size: 20px;
-height:140px;
-width:140px;
+height:100%;
+width:100%;
 content: '';
 background-color: white;
 display: inline-block;
 background-image:url(../images/door.png) !important;
 background-repeat:no-repeat;
-background-size: 140px;
+background-size: 100% 100%;
 }
 
 button:not(:disabled){
@@ -130,7 +146,15 @@ background-position: center;
   background-color: #333;
   position:relative;
   width:140px;
-  height:140px;
+  height:160px;
   margin: 20px;
 margin-bottom: 0px;
+}
+
+.statistics{
+display: flex;
+}
+
+.statistics-result{
+    margin-left: 40px;
 }
