@@ -1,9 +1,14 @@
 from flask import Flask, render_template, request
 import redis
 import json
-import os
-from urllib.parse import urlparse
-from prettyprinter import pprint
+
+# we can run docker with redis (there's only a fork on Win) and specify ports
+# $docker run -p 55000:6379 redis
+# the check with $docker ps
+# r = redis.Redis(port=55000, decode_responses=True)
+# hosting
+r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username="Maciej",
+                password="Admin_123", decode_responses=True)
 
 app = Flask(__name__)
 
@@ -32,12 +37,6 @@ def updateLeaderboard():
     return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
 if __name__ == '__main__':
-    # we can run docker with redis (there's only a fork on Win) and specify ports
-    # $docker run -p 55000:6379 redis
-    # the check with $docker ps
-    # r = redis.Redis(port=55000, decode_responses=True)
-    # hosting
-    r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username="Maciej", password="Admin_123", decode_responses=True)
 
     # r.flushdb()
     # r.mset({"Maciej":"66%"})
