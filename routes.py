@@ -35,9 +35,8 @@ if __name__ == '__main__':
     # we can run docker with redis (there's only a fork on Win) and specify ports
     # $docker run -p 55000:6379 redis
     # the check with $docker ps
-    # url = urlparse(os.environ.get("REDIS_URL"))
-    # r = redis.Redis(host=url.hostname, port=url.port, username=url.username, password=url.password, decode_responses=True)
     # r = redis.Redis(port=55000, decode_responses=True)
+    # hosting
     r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username="Maciej", password="Admin_123", decode_responses=True)
 
     # r.flushdb()
