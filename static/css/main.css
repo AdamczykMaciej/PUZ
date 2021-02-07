@@ -12,7 +12,10 @@ body {
     margin: 0;
     background-color: #1E90FF !important;
 }
-
+.btn:disabled{
+    background-color: #E0E0E0 !important;
+    border-color: #E0E0E0 !important
+}
 #container {
     margin: 2em auto;
     width: 740px;
