@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import redis
 import json
+import os
+from urllib.parse import urlparse
 from prettyprinter import pprint
 
 app = Flask(__name__)
@@ -33,13 +35,17 @@ if __name__ == '__main__':
     # we can run docker with redis (there's only a fork on Win) and specify ports
     # $docker run -p 55000:6379 redis
     # the check with $docker ps
-    r = redis.Redis(port=55000, decode_responses=True)
+    # url = urlparse(os.environ.get("REDIS_URL"))
+    # r = redis.Redis(host=url.hostname, port=url.port, username=url.username, password=url.password, decode_responses=True)
+    # r = redis.Redis(port=55000, decode_responses=True)
+    r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port=17386, username="Maciej", password="Admin_123", decode_responses=True)
+
     # r.flushdb()
     # r.mset({"Maciej":"66%"})
     # r.hmset("leaderboard",{"Bartek":"70%"})
     # r.hmset("leaderboard",{"Maciek":"80%"})
     # print(r.get("Maciej"))
     # pprint(r.keys())
-    for result in r.hscan_iter("leaderboard", match='*'):
-        print(result)
+    # for result in r.hscan_iter("leaderboard", match='*'):
+    #     print(result)
     app.run(debug=True)

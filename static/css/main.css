@@ -36,7 +36,7 @@ h2 {
 
 p, li {
     font-size: 1em;
-
+    margin-bottom: 0.2rem !important;
 }
 
 p.credit {
@@ -67,6 +67,7 @@ img {
 height:140px;
 width:140px;
 margin: 20px;
+margin-bottom: 0px;
 content: '';
 cursor: pointer;
 background-color: white;
@@ -82,3 +83,19 @@ display: inline-block;
     font-size: 20px;
 }
 
+/* Set additional styling options for the columns*/
+.column {
+float: left;
+width: 50%;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+.row{
+margin-right: 0px;
+margin-left: 0px;
+}
