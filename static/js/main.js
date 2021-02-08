@@ -141,7 +141,7 @@ function simulate(){
 }
 
 function updateLeaderboard(){
-    if(howManyTimesPlayed === 10){
+    if(howManyTimesPlayed >= 10){
      $.post("/api/updateLeaderboard",
   {
     name: document.getElementById("name").value,
