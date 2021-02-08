@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import redis
 import json
 import os
+import logging
+import sys
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -16,7 +18,9 @@ r = redis.Redis(host="redis-17386.c89.us-east-1-3.ec2.cloud.redislabs.com", port
                 password=password, decode_responses=True)
 
 app = Flask(__name__)
-
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+app.logger.info(username+","+password)
 # two decorators, same function
 @app.route('/')
 @app.route('/index.html')
