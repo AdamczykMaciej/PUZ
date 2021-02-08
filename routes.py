@@ -4,8 +4,6 @@ import json
 import os
 import logging
 import sys
-from dotenv import load_dotenv
-load_dotenv()
 
 # 1st option) we can run docker with redis (there's only a fork on Windows) and specify ports
 # $docker run -p 55000:6379 redis
