@@ -1,57 +1,8 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-<h1>{{ the_title }}</h1>
-<p style="font-style: italic;">Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, “Do you want to pick door No. 2?” Is it to your advantage to switch your choice? ~ (From Parade magazine’s Ask Marilyn column)</p>
-<label>GOAL: Win a brand new car</label><br>
-<label>STEP 1: Choose door (1-3)</label><br>
-<label>STEP 2: Click on blue button "Choose door"</label><br>
-<label>STEP 3: Monty Hall reveals one door</label><br>
-<label>STEP 4: Leave or change the bet</label><br>
-<label>STEP 5: Click on blue button "Choose door"</label><br>
-<label>STEP 6: Monty Hall reveals all doors</label>
-<br>
-<div id="container2">
-    <div class="backDoor" id="backDoor1">
-    <button onclick="clickBox(this)" class="box" id="1">1</button>
-    </div>
-      <div class="backDoor" id="backDoor2">
-    <button onclick="clickBox(this)" class="box" id="2">2</button>
-      </div>
-      <div class="backDoor" id="backDoor3">
-    <button onclick="clickBox(this)" class="box" id="3">3</button>
-      </div>
-</div>
-<br>
-
-<div class="row">
-    <div class="column">
-        <p id="result"></p>
-        <button class="btn btn-primary" id="simulate" onclick="simulate()" disabled>Choose door</button>
-        <button class="btn btn-danger" id="reset" onclick="resetGame()" disabled>New game</button>
-        <div class="statistics">
-            <p>How many games won?</p>
-            <p class="statistics-result" style="margin-left: 50px;" id="won-num">0</p>
-        </div>
-        <div class="statistics">
-            <p>How many games played? </p>
-            <p class="statistics-result"  id="played-num">0</p>
-        </div>
-        <div class="statistics">
-            <p>Percentage of won games:</p>
-            <p class="statistics-result"  id="won-percent">0%</p>
-        </div>
-    </div>
-    <div class="column">
-        <p>Submit score to the leaderboard after 10 games:</p>
-        <form>
-          <label for="name">Name:</label><br>
-          <input style="margin-bottom: 10px;max-width: 100%;" type="text" id="name" value=""><br>
-          <input id="submit" onclick="updateLeaderboard()" type="submit" value="Submit" disabled>
-        </form>
-        <table id="leaderboard"></table>
-    </div>
-</div>
-
+<script type="text/javascript" src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+<div>Please choose your language version:</div>
+<button><a href="./instructions">Polish</a></button>
+<button><a href="./en/instructions">English</a></button>
 {% endblock %}

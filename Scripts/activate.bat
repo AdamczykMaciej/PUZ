@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=D:\PJATK_Informatyka2\magisterkie\2_semestr\PUZ\PUZ9 - simulation\basic-flask-app"
+set "VIRTUAL_ENV=D:\PJATK_Informatyka2\magisterkie\3_semestr\MKR\BrainTestSimulation_Audio\BrainTestSimulation_Audio"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"
@@ -23,7 +23,7 @@ if defined _OLD_VIRTUAL_PYTHONHOME (
 )
 
 set "_OLD_VIRTUAL_PROMPT=%PROMPT%"
-set "PROMPT=(basic-flask-app) %PROMPT%"
+set "PROMPT=(BrainTestSimulation_Audio) %PROMPT%"
 
 if defined PYTHONHOME (
     set "_OLD_VIRTUAL_PYTHONHOME=%PYTHONHOME%"

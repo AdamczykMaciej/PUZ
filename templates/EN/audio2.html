@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+<div>
+    <b>
+    Audio no. 2
+    </b>
+</div>
+<br>
+<input type="button" id="audio_play" value="PLAY audio">
+<audio id="audio">
+  <source src="{{ url_for('static', filename='audio/pomidor_disgust.mp3')}}" type="audio/mp3">
+</audio>
+{% block checkboxes %}
+  {% include '/EN/checkboxes.html' %}
+{% endblock %}
+<a href="./audio3"><button id="next">Next</button></a>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+<div>
+     <p>
+    Instructions:
+    In a while you will be presented with audio recordings. Your task is to listen to them and check the correct answer regarding the sentiment of the voice.
+        It is important to answer as quick as possible to make the test valid.
+    </p>
+    <button><a href="./audio1">Next</a></button>
+</div>
+
+
+{% endblock %}

@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="D:\PJATK_Informatyka2\magisterkie\2_semestr\PUZ\PUZ9 - simulation\basic-flask-app"
+$env:VIRTUAL_ENV="D:\PJATK_Informatyka2\magisterkie\3_semestr\MKR\BrainTestSimulation_Audio\BrainTestSimulation_Audio"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
@@ -35,7 +35,7 @@ if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     function global:_OLD_VIRTUAL_PROMPT {""}
     copy-item function:prompt function:_OLD_VIRTUAL_PROMPT
     function global:prompt {
-        Write-Host -NoNewline -ForegroundColor Green '(basic-flask-app) '
+        Write-Host -NoNewline -ForegroundColor Green '(BrainTestSimulation_Audio) '
         _OLD_VIRTUAL_PROMPT
     }
 }

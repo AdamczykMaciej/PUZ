@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\PJATK_Informatyka2\magisterkie\2_semestr\PUZ\PUZ9 - simulation\basic-flask-app"
+VIRTUAL_ENV="D:\PJATK_Informatyka2\magisterkie\3_semestr\MKR\BrainTestSimulation_Audio\BrainTestSimulation_Audio"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -54,8 +54,8 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    if [ "x(basic-flask-app) " != x ] ; then
-	PS1="(basic-flask-app) ${PS1:-}"
+    if [ "x(BrainTestSimulation_Audio) " != x ] ; then
+	PS1="(BrainTestSimulation_Audio) ${PS1:-}"
     else
     if [ "`basename \"$VIRTUAL_ENV\"`" = "__" ] ; then
         # special case for Aspen magic directories

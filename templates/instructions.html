@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+<div>
+    <p>
+    Instrukcja:
+    Za chwilę wyświetlą Ci się nagrania audio. Twoim zadaniem będzie ich wysłuchanie oraz poprawne udzielenie odpowiedzi na to jaki stan emocjonalny dane nagranie wyraża.
+    W teście liczy się szybkość udzielenia odpowiedzi.
+    </p>
+    <button><a href="./audio1">Dalej</a></button>
+</div>
+
+
+{% endblock %}
